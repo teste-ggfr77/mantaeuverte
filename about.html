@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./lotus.png">
+  <title >About Us - Garden Manteau.vert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #b84a00;
+      --accent-color: #f7e1c1;
+      --bg-light: #fff8f0;
+      --text-dark: #2e2e2e;
+      --text-light: #0f0a0a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header.hero {
+      background: url('./about-background.jpg') no-repeat center center/cover;
+      color: var(--text-light);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    header.hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(250, 250, 250, 0.4);
+      color: #f84f00;
+    
+    }
+    
+    .clickable-image {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .clickable-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 1200px;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    
+    .modal-caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 1200px;
+      text-align: center;
+      color: white;
+      padding: 10px 0;
+      font-size: 1.2rem;
+    }
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: var(--primary-color);
+    }
+    
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+    
+    .gallery-thumbnail {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: border-color 0.3s;
+    }
+    
+    .gallery-thumbnail:hover {
+      border-color: var(--primary-color);
+    }
+    
+    .active-thumbnail {
+      border-color: var(--primary-color);
+    }
+
+    .my-element {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    header.hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      text-shadow: 1px 1px 3px rgba(12, 12, 12, 0.3);
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+      color: #2e2e2e;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      color: #0c0c0c;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .mission p,
+    .story p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #0c0c0c;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background-color: var(--accent-color);
+      padding: 60px 20px;
+      color: var(--primary-color);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      margin: 15px;
+    }
+
+    .stat h3 {
+      font-size: 3rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 60px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: var(--primary-color);
+    }
+
+    .timeline-event {
+      position: relative;
+      width: 50%;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .timeline-event.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-event.right {
+      left: 50%;
+    }
+
+    .timeline-event::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      left: -10px;
+    }
+
+    .timeline-event.right::after {
+      left: auto;
+      right: -10px;
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .team-member {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .faq {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-item button {
+      width: 100%;
+      text-align: left;
+      padding: 15px;
+      font-size: 1.1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .faq-item div {
+      display: none;
+      padding: 10px 15px;
+      background-color: #f4f4f4;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .parallax {
+      background: url('https://images.unsplash.com/photo-1444393907311-1a8f3fdd4a4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat fixed center;
+      height: 300px;
+      background-size: cover;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-event,
+      .timeline-event.right,
+      .timeline-event.left {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-event::after {
+        left: -10px !important;
+        right: auto !important;
+      }
+
+      header.hero h1 {
+        font-size: 2.5rem;
+        color: #000000;
+      }
+      
+      .modal-content {
+        width: 95%;
+      }
+    }
+    #languageSwitcher {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #languageSwitcher:hover {
+      background-color: #8c3700;
+      transform: scale(1.03);
+    }
+
+    #languageSwitcher:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(184, 74, 0, 0.4);
+    }
+
+    .language-switcher-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .tools, .how-we-work, .more {
+      border-radius: 12px;
+      padding: 60px 30px;
+      background-color: var(--bg-light);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .section .container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .section .text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .section .image {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .section .image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section.reverse .container {
+      flex-direction: row-reverse;
+    }
+    .journey-intro {
+      max-width: 60%;
+      margin: 0 auto 40px auto;
+      text-align: center;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      padding: 20px 0;
+      width: 90%;
+    }
+  </style>
+</head>
+<body>
+    <div class="language-switcher-container">
+        <select id="languageSwitcher" onchange="switchLanguage()">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="ar">العربية</option>
+        </select>
+      </div>
+      
+
+  <header class="hero">
+    <div class="lang en">
+      <h1>Welcome to  Manteau.vert</h1>
+      <p>Connecting people with nature, one green space at a time.</p>
+    </div>
+    <div class="lang fr" style="display:none;">
+      <h1>Bienvenue à  Manteau.vert</h1>
+      <p>Relier les gens à la nature, un espace vert à la fois.</p>
+    </div>
+    <div class="lang es" style="display:none;">
+      <h1>Bienvenido a  Manteau.vert</h1>
+      <p>Conectando a las personas con la naturaleza, un espacio verde a la vez.</p>
+    </div>
+    <div class="lang ar" style="display:none; direction: rtl;">
+      <h1>مرحبًا بكم في جاردن Manteau.vert</h1>
+      <p>ربط الناس بالطبيعة، مساحة خضراء في كل مرة.</p>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat">
+      <h3 id="gardens">0</h3>
+      <p class="lang en">Community Gardens</p>
+      <p class="lang fr" style="display:none;">Jardins Communautaires</p>
+      <p class="lang es" style="display:none;">Jardines Comunitarios</p>
+      <p class="lang ar" style="display:none; direction: rtl;">حدائق مجتمعية</p>
+    </div>
+    <div class="stat">
+      <h3 id="volunteers">0</h3>
+      <p class="lang en">Volunteers</p>
+      <p class="lang fr" style="display:none;">Bénévoles</p>
+      <p class="lang es" style="display:none;">Voluntarios</p>
+      <p class="lang ar" style="display:none; direction: rtl;">متطوعون</p>
+    </div>
+    <div class="stat">
+      <h3 id="cities">0</h3>
+      <p class="lang en">Cities </p>
+      <p class="lang fr" style="display:none;">Villes Mondiales</p>
+      <p class="lang es" style="display:none;">Ciudades Globales</p>
+      <p class="lang ar" style="display:none; direction: rtl;">مدن حول العالم</p>
+    </div>
+  </section>
+
+  <section class="section mission" data-aos="fade-up">
+    <div class="lang en">
+      <h2>Our Mission</h2>
+      <div class="grid-2">
+        <p>We aim to reintroduce the beauty of natural Gardening and engineering, in addition to pools and waterfalls to communities around the world through sustainable practices and community engagement. Our team of experts works tirelessly to create green spaces that benefit both people and the environment.</p>
+        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09" alt="garden" class="clickable-image" onclick="openModal('https://images.unsplash.com/photo-1480074568708-e7b720bb3f09', 'Our community garden in Marroco')" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+    <div class="lang fr" style="display: none;">
+      <h2>Notre Mission</h2>
+      <div class="grid-2">
+        <p>Nous visons à réintroduire la beauté du Jardinage et ingénierie, en plus des piscines et des cascades naturel dans les communautés du monde entier grâce à des pratiques durables et à un engagement communautaire. Notre équipe d'experts travaille sans relâche pour créer des espaces verts qui profitent à la fois aux gens et à l'environnement.</p>
+        <img src="https://images.unsplash.com/photo-1570641963303-92ce4845ed4c" alt="jardin" class="clickable-image" onclick="openModal('https://images.unsplash.com/photo-1570641963303-92ce4845ed4c', 'Notre jardin communautaire à Marroco')" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+    <div class="lang es" style="display: none;">
+      <h2>Nuestra Misión</h2>
+      <div class="grid-2">
+        <p>Nuestro objetivo es reintroducir la belleza de la Jardinería e ingeniería, además de piscinas y cascadas. natural en comunidades de todo el mundo a través de prácticas sostenibles y participación comunitaria. Nuestro equipo de expertos trabaja incansablemente para crear espacios verdes que beneficien tanto a las personas como al medio ambiente.</p>
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae" alt="jardín" class="clickable-image" onclick="openModal('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae', 'Nuestro jardín comunitario en Marroco')" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+    <div class="lang ar" style="display: none; direction: rtl;">
+      <h2>مهمتنا</h2>
+      <div class="grid-2">
+        <p>نهدف إلى إعادة تقديم جمال البستنة والهندسة اضافتا لمسابح والشلالت الطبيعية للمجتمعات حول العالم من خلال الممارسات المستدامة والمشاركة المجتمعية. يعمل فريقنا من الخبراء بلا كلل لإنشاء مساحات خضراء تفيد الناس والبيئة على حد سواء.</p>
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae" alt="حديقة" class="clickable-image" onclick="openModal('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae', 'حديقتنا المجتمعية في المغرب')" style="width:100%; border-radius:8px;">
+      </div>
+    </div>
+  </section>
+  
+  <section class="section tools" data-aos="fade-up">
+    <div class="container flex">
+      <div class="text">
+        <div class="lang en">
+          <h2>Our Tools</h2>
+          <p>We use eco-friendly tools and innovative technologies to design and implement pools, artificial waterfalls, fountains, and gardens with minimal environmental impact. From smart composting systems to advanced irrigation techniques, our tools are built for sustainability and excellence.
+
+          </p>
+        </div>
+        <div class="lang fr" style="display:none;">
+          <h2>Nos Outils</h2>
+          <p>Nous utilisons des outils écologiques et des technologies innovantes pour concevoir et réaliser des piscines, des cascades artificielles, des fontaines et des jardins, tout en minimisant l’impact environnemental. Des systèmes de compostage intelligents aux techniques d’irrigation avancées, nos outils sont conçus pour la durabilité et la qualité.
+
+          </p>
+        </div>
+        <div class="lang es" style="display:none;">
+          <h2>Nuestras Herramientas</h2>
+          <p>Utilizamos herramientas ecológicas y tecnologías innovadoras para diseñar y construir piscinas, cascadas artificiales, fuentes y jardines con un impacto ambiental mínimo. Desde sistemas de compostaje inteligentes hasta técnicas avanzadas de riego, nuestras herramientas están diseñadas para la sostenibilidad y la excelencia.
+
+          </p>
+        </div>
+        <div class="lang ar" style="display:none; direction: rtl;">
+          <h2>أدواتنا</h2>
+          <p>نستخدم أدوات صديقة للبيئة وتقنيات مبتكرة في تصميم وتنفيذ المسابح، الشلالات الصناعية، النوافير، والحدائق، بهدف تقليل التأثير البيئي. من أنظمة التسميد الذكية إلى تقنيات الري المتقدمة، تم تطوير أدواتنا لتحقيق أعلى مستويات الاستدامة والجودة.</p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="./tools-about.jpg" alt="Our Tools" class="clickable-image" onclick="openGallery('tools-gallery', 'Our Gardening Tools')">
+      </div>
+    </div>
+  </section>
+  
+  <section class="section how-we-work" data-aos="fade-up" style="background-color: var(--accent-color);">
+    <div class="container flex reverse">
+      <div class="text">
+        <div class="lang en">
+          <h2>How We Work</h2>
+          <p>Our process begins with community consultation, followed by garden design, implementation, and ongoing education. We partner with local organizations to ensure long-term impact.</p>
+        </div>
+        <div class="lang fr" style="display:none;">
+          <h2>Comment Nous Travaillons</h2>
+          <p>Notre processus commence par une consultation communautaire, suivie de la conception du jardin, de sa mise en œuvre et d'une éducation continue. Nous collaborons avec des organisations locales pour assurer un impact durable.</p>
+        </div>
+        <div class="lang es" style="display:none;">
+          <h2>Cómo Trabajamos</h2>
+          <p>Nuestro proceso comienza con la consulta comunitaria, seguido del diseño del jardín, la implementación y la educación continua. Colaboramos con organizaciones locales para garantizar un impacto duradero.</p>
+        </div>
+        <div class="lang ar" style="display:none; direction: rtl;">
+          <h2>كيف نعمل</h2>
+          <p>يبدأ عملنا بالتشاور مع المجتمع، يليه تصميم الحديقة، ثم التنفيذ والتعليم المستمر. نحن نتعاون مع منظمات محلية لضمان تأثير طويل الأمد.</p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="tools-about.webp" alt="How We Work" class="clickable-image" onclick="openGallery('work-gallery', 'Our Work Process')">
+      </div>
+    </div>
+  </section>
+  
+  <section class="section more" data-aos="fade-up">
+    <div class="container flex">
+      <div class="text">
+        <div class="lang en">
+          <h2>More</h2>
+          <p>We are continuously expanding our mission to reconnect communities with nature through sustainable landscaping, water features, and innovative green solutions. From urban gardens to custom-designed fountains, pools, and artificial waterfalls, our projects bring natural beauty to modern spaces. Stay tuned for exciting new initiatives and events that reflect our commitment to eco-conscious design and community enhancement.
+
+</p>
+        </div>
+        <div class="lang fr" style="display:none;">
+          <h2>Plus</h2>
+          <p>Nous poursuivons notre mission de reconnecter les communautés à la nature grâce à l’aménagement paysager durable, aux installations aquatiques et aux solutions écologiques innovantes. Des jardins urbains aux fontaines, piscines et cascades artificielles sur mesure, nos projets apportent la beauté naturelle dans les espaces modernes. Restez à l’écoute pour découvrir nos prochaines initiatives et événements qui reflètent notre engagement envers un design respectueux de l’environnement et l’enrichissement communautaire.
+
+          </p>
+        </div>
+        <div class="lang es" style="display:none;">
+          <h2>Más</h2>
+          <p>Seguimos ampliando nuestra misión de reconectar a las comunidades con la naturaleza a través de paisajismo sostenible, elementos acuáticos y soluciones ecológicas innovadoras. Desde jardines urbanos hasta fuentes personalizadas, piscinas y cascadas artificiales, nuestros proyectos incorporan la belleza natural en espacios modernos. ¡Mantente al tanto de nuestras próximas iniciativas y eventos que reflejan nuestro compromiso con el diseño ecológico y el fortalecimiento comunitario!
+
+          </p>
+        </div>
+        <div class="lang ar" style="display:none; direction: rtl;">
+          <h2>المزيد</h2>
+          <p>نواصل توسيع مهمتنا لإعادة ربط المجتمعات بالطبيعة من خلال تنسيق الحدائق المستدام، والميزات المائية، والحلول البيئية المبتكرة. من الحدائق الحضرية إلى النوافير المصممة حسب الطلب، والمسابح، والشلالات الصناعية، تضيف مشاريعنا جمال الطبيعة إلى المساحات العصرية. ترقبوا مبادراتنا وفعالياتنا القادمة التي تعكس التزامنا بالتصميم الواعي بيئياً وتعزيز المجتمعات.
+
+          </p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2" alt="More Initiatives" class="clickable-image" onclick="openGallery('projects-gallery', 'Our Projects')">
+      </div>
+    </div>
+  </section>
+  
+  <section class="section timeline" data-aos="fade-up">
+    <h2>
+        <span class="lang en">Our Journey</span>
+        <span class="lang fr" style="display:none;">Notre parcours</span>
+        <span class="lang es" style="display:none;">Nuestro camino</span>
+        <span class="lang ar" style="display:none; direction: rtl;">رحلتنا</span>
+      </h2>
+      
+      <p class="lang en">
+        From a small vision to a growing reality, our journey has been <br>marked by  dedication, creativity, and innovation. We continue to <br> evolve ,guided by
+         our mission to make a lasting impact.
+      </p>
+      <p class="lang fr" style="display:none;">
+        D'une petite vision à une réalité en croissance, notre parcours a été <br> marqué par la dévotion, la créativité et l'innovation. <br> Nous continuons <br>d'évoluer, guidés par notre mission d'avoir un impact durable.
+      </p>
+      <p class="lang es" style="display:none;">
+        De une pequeña visión a una realidad en expansión, nuestro viaje <br> ha estado marcado por la dedicación, la creatividad y la innovación. <br> Seguimos evolucionando, guiados por nuestra misión de dejar una <br>huella duradera.
+      </p>
+      <p class="lang ar" style="display:none; direction: rtl;">
+        من رؤية صغيرة إلى واقع يتوسع، كانت رحلتنا مليئة بالتفاني والإبداع والابتكار <br>. نستمر في التطور، مدفوعين بمهمتنا لإحداث تأثير دائم.
+      </p>
+      
+      <div class="timeline">
+        <div class="timeline-event left">
+          <strong>2012:</strong>
+          <span class="lang en">Garden Manteau.vert is founded with a small community garden in Marroco</span>
+          <span class="lang fr" style="display:none;">Création de Garden Manteau.vert avec un petit jardin communautaire à Portland</span>
+          <span class="lang es" style="display:none;">Garden Manteau.vert se funda con un pequeño jardín comunitario en Portland</span>
+          <span class="lang ar" style="display:none; direction: rtl;">تأسيس جاردن بليس بحديقة مجتمعية صغيرة في المغرب</span>
+        </div>
+      
+        <div class="timeline-event right">
+          <strong>2014:</strong>
+          <span class="lang en">First urban garden launched in partnership with local hotel</span>
+          <span class="lang fr" style="display:none;">Lancement du premier jardin urbain en partenariat avec les écoles locales</span>
+          <span class="lang es" style="display:none;">Primer jardín urbano lanzado en colaboración con escuelas locales</span>
+          <span class="lang ar" style="display:none; direction: rtl;">إطلاق أول حديقة حضرية بالشراكة مع المدارس المحلية</span>
+        </div>
+      
+        <div class="timeline-event left">
+          <strong>2017:</strong>
+          <span class="lang en">Partnered with 100 custom garden and water feature installations </span>
+          <span class="lang fr" style="display:none;">Partenariat avec 100 écoles à travers l'Amérique du Nord</span>
+          <span class="lang es" style="display:none;">Asociación con 100 escuelas en América del Norte</span>
+          <span class="lang ar" style="display:none; direction: rtl;">شراكة مع 100 مدرسة في جميع أنحاء أمريكا الشمالية</span>
+        </div>
+      
+        <div class="timeline-event right">
+          <strong>2021:</strong>
+          <span class="lang en">Expanded operations to 50 cities </span>
+          <span class="lang fr" style="display:none;">Expansion des opérations dans 50 villes à travers le monde</span>
+          <span class="lang es" style="display:none;">Expansión de operaciones a 50 ciudades en todo el mundo</span>
+          <span class="lang ar" style="display:none; direction: rtl;">توسيع العمليات إلى 50 مدينة حول العالم</span>
+        </div>
+      </div>
+      
+  </section>
+
+  <section class="section community-impact" data-aos="fade-up">
+    <div class="container flex reverse">
+      <div class="text">
+        <div class="lang en">
+          <h2>Community Impact</h2>
+          <p>Over the past year, we've completed over 20 custom garden and water feature installations, collaborated with 15 hotels and companies, and helped create greener, healthier spaces for employees and guests. Our work brings nature into urban environments while promoting sustainability and beauty.
+
+</p>
+        </div>
+        <div class="lang fr" style="display:none;">
+          <h2>Impact Communautaire</h2>
+          <p>Au cours de l'année écoulée, nous avons réalisé plus de 20 projets sur mesure de jardins et d'installations aquatiques, collaboré avec 15 hôtels et entreprises, et contribué à créer des espaces plus verts et plus sains pour les employés et les clients. Notre travail apporte la nature dans les environnements urbains tout en promouvant la durabilité et l’esthétique.
+
+          </p>
+        </div>
+        <div class="lang es" style="display:none;">
+          <h2>Impacto en la Comunidad</h2>
+          <p>Durante el último año, hemos completado más de 20 instalaciones personalizadas de jardines y elementos acuáticos, colaborado con 15 hoteles y empresas, y ayudado a crear espacios más verdes y saludables para empleados y huéspedes. Nuestro trabajo lleva la naturaleza a los entornos urbanos, promoviendo al mismo tiempo la sostenibilidad y la belleza.
+
+          </p>
+        </div>
+        <div class="lang ar" style="display:none; direction: rtl;">
+          <h2>أثرنا في المجتمع</h2>
+          <p>خلال العام الماضي، أنجزنا أكثر من 20 مشروعاً لتنسيق الحدائق وإنشاء المزايا المائية حسب الطلب، وتعاوننا مع 15 فندقاً وشركة، وساهمنا في خلق مساحات أكثر خضرة وصحة للموظفين والضيوف. عملنا يدمج الطبيعة في البيئات الحضرية ويعزز الاستدامة والجمال في آن واحد.
+
+        </p>
+        </div>
+      </div>
+      <div class="image">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" alt="Community Impact" class="clickable-image" onclick="openGallery('impact-gallery', 'Community Impact')">
+      </div>
+    </div>
+  </section>
+  
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="modalCaption" class="modal-caption"></div>
+  </div>
+  
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="modal">
+    <span class="close" onclick="closeGallery()">&times;</span>
+    <img class="modal-content" id="galleryMainImage">
+    <div id="galleryCaption" class="modal-caption"></div>
+    <div class="gallery-container" id="galleryThumbnails"></div>
+  </div>
+
+  <section class="parallax"></section>
+
+  <section class="section faq" data-aos="fade-up">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button onclick="toggleFAQ(this)">How can I volunteer?</button>
+      <div class="lang en">Fill out our volunteer form and we'll contact you with upcoming opportunities!</div>
+      <div class="lang fr" style="display:none;">Remplissez notre formulaire de bénévolat et nous vous contacterons avec des opportunités à venir!</div>
+      <div class="lang es" style="display:none;">Complete nuestro formulario de voluntario y nos pondremos en contacto con usted con próximas oportunidades!</div>
+      <div class="lang ar" style="display:none; direction: rtl;">املأ نموذج المتطوعين وسنتواصل معك مع الفرص القادمة!</div>
+    </div>
+    <div class="faq-item">
+      <button onclick="toggleFAQ(this)">Do you offer workshops?</button>
+      <div class="lang en">Yes! We offer monthly workshops on sustainable gardening</div>
+      <div class="lang fr" style="display:none;">Oui! Nous proposons des ateliers mensuels sur le jardinage durable</div>
+      <div class="lang es" style="display:none;">¡Sí! Ofrecemos talleres mensuales sobre jardinería sostenible</div>
+      <div class="lang ar" style="display:none; direction: rtl;">نعم! نقدم ورش عمل شهرية عن البستنة المستدامة</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="lang en">&copy; 2025 Garden Manteau.vert. All rights reserved.</div>
+    <div class="lang fr" style="display:none;">&copy; 2025 Garden Manteau.vert. Tous droits réservés.</div>
+    <div class="lang es" style="display:none;">&copy; 2025 Garden Manteau.vert. Todos los derechos reservados.</div>
+    <div class="lang ar" style="display:none; direction: rtl;">&copy; 2025 جاردن بليس. جميع الحقوق محفوظة.</div>
+  </footer>
+
+  <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    // Gallery data - you can add more images to each gallery
+    const galleries = {
+      'tools-gallery': {
+        title: {
+          en: 'Our Gardening Tools',
+          fr: 'Nos Outils de Jardinage',
+          es: 'Nuestras Herramientas de Jardinería',
+          ar: 'أدوات البستنة لدينا'
+        },
+        images: [
+          {url: 'https://admin.myhubz.in/storage/news/1715403119.8282.jpg', caption: {
+            en: 'Eco-friendly gardening tools',
+            fr: 'Outils de jardinage écologiques',
+            es: 'Herramientas de jardinería ecológicas',
+            ar: 'أدوات بستنة صديقة للبيئة'
+          }},
+          {url: 'https://bloximages.chicago2.vip.townnews.com/swoknews.com/content/tncms/assets/v3/editorial/5/da/5dac28f6-8e69-5653-91cc-36567d2ecc11/61148283628d4.image.jpg', caption: {
+            en: 'Smart irrigation system',
+            fr: 'Système d\'irrigation intelligent',
+            es: 'Sistema de riego inteligente',
+            ar: 'نظام ري ذكي'
+          }},
+          {url: 'https://cdn.pixabay.com/photo/2018/05/09/07/12/construction-3384692_1280.jpg', caption: {
+            en: 'Composting equipment',
+            fr: 'Équipement de compostage',
+            es: 'Equipo de compostaje',
+            ar: 'معدات التسميد'
+          }}
+        ]
+      },
+      'work-gallery': {
+
+        images: [
+
+
+        ]
+      },
+      'projects-gallery': {
+        title: {
+          en: 'Our Projects',
+          fr: 'Nos Projets',
+          es: 'Nuestros Proyectos',
+          ar: 'مشاريعنا'
+        },
+        images: [
+          {url: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2', caption: {
+            en: 'School garden program',
+            fr: 'Programme de jardin scolaire',
+            es: 'Programa de jardín escolar',
+            ar: 'برنامج حديقة المدرسة'
+          }},
+          {url: 'https://images.unsplash.com/photo-1570641963303-92ce4845ed4c', caption: {
+            en: 'Urban farming initiative',
+            fr: 'Initiative d\'agriculture urbaine',
+            es: 'Iniciativa de agricultura urbana',
+            ar: 'مبادرة الزراعة الحضرية'
+          }},
+          {url: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae', caption: {
+            en: 'Community workshops',
+            fr: 'Ateliers communautaires',
+            es: 'Talleres comunitarios',
+            ar: 'ورش عمل مجتمعية'
+          }}
+        ]
+      },
+      'impact-gallery': {
+        title: {
+          en: 'Community Impact',
+          fr: 'Impact Communautaire',
+          es: 'Impacto en la Comunidad',
+          ar: 'أثرنا في المجتمع'
+        },
+        images: [
+          {url: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf', caption: {
+            en: 'Students learning in our gardens',
+            fr: 'Étudiants apprenant dans nos jardins',
+            es: 'Estudiantes aprendiendo en nuestros jardines',
+            ar: 'طلاب يتعلمون في حدائقنا'
+          }},
+          {url: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09', caption: {
+            en: 'Community harvest day',
+            fr: 'Journée de récolte communautaire',
+            es: 'Día de cosecha comunitaria',
+            ar: 'يوم الحصاد المجتمعي'
+          }},
+          {url: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae', caption: {
+            en: 'Volunteers at work',
+            fr: 'Bénévoles au travail',
+            es: 'Voluntarios trabajando',
+            ar: 'متطوعون يعملون'
+          }}
+        ]
+      }
+    };
+
+    // Modal functions
+    function openModal(imgSrc, captionText) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const caption = document.getElementById('modalCaption');
+      
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+      caption.innerHTML = captionText;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+
+    // Gallery functions
+    let currentGallery = null;
+
+    function openGallery(galleryId, defaultTitle) {
+      currentGallery = galleryId;
+      const gallery = galleries[galleryId];
+      const modal = document.getElementById('galleryModal');
+      const mainImg = document.getElementById('galleryMainImage');
+      const caption = document.getElementById('galleryCaption');
+      const thumbnails = document.getElementById('galleryThumbnails');
+      
+      // Set title based on current language
+      const lang = document.getElementById('languageSwitcher').value;
+      const title = gallery.title[lang] || defaultTitle;
+      
+      modal.style.display = "block";
+      thumbnails.innerHTML = '';
+      
+      // Set first image as main image
+      if (gallery.images.length > 0) {
+        mainImg.src = gallery.images[0].url;
+        caption.innerHTML = gallery.images[0].caption[lang] || gallery.images[0].caption.en;
+        
+        // Create thumbnails
+        gallery.images.forEach((image, index) => {
+          const thumb = document.createElement('img');
+          thumb.src = image.url;
+          thumb.className = 'gallery-thumbnail';
+          if (index === 0) thumb.classList.add('active-thumbnail');
+          thumb.onclick = () => {
+            mainImg.src = image.url;
+            caption.innerHTML = image.caption[lang] || image.caption.en;
+            document.querySelectorAll('.gallery-thumbnail').forEach(t => t.classList.remove('active-thumbnail'));
+            thumb.classList.add('active-thumbnail');
+          };
+          thumbnails.appendChild(thumb);
+        });
+      }
+    }
+
+    function closeGallery() {
+      document.getElementById('galleryModal').style.display = "none";
+      currentGallery = null;
+    }
+
+    // Close modals when clicking outside the image
+    window.onclick = function(event) {
+      const imageModal = document.getElementById('imageModal');
+      const galleryModal = document.getElementById('galleryModal');
+      
+      if (event.target == imageModal) {
+        closeModal();
+      }
+      if (event.target == galleryModal) {
+        closeGallery();
+      }
+    }
+
+    function animateCounters() {
+      const stats = [
+        { id: "gardens", value: 340 },
+        { id: "volunteers", value: 1200 },
+        { id: "cities", value: 55 }
+      ];
+
+      stats.forEach(stat => {
+        let el = document.getElementById(stat.id);
+        let count = 0;
+        const interval = setInterval(() => {
+          count += Math.ceil(stat.value / 50);
+          if (count >= stat.value) {
+            count = stat.value;
+            clearInterval(interval);
+          }
+          el.textContent = count;
+        }, 30);
+      });
+    }
+
+    function toggleFAQ(button) {
+      const answer = button.parentElement.querySelectorAll('div');
+      answer.forEach(div => {
+        if (div.style.display === 'block') {
+          div.style.display = 'none';
+        } else {
+          div.style.display = div.classList.contains('lang') && 
+            !div.style.display ? 'block' : 'none';
+        }
+      });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTop');
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    function switchLanguage() {
+      const lang = document.getElementById('languageSwitcher').value;
+      document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
+      document.querySelectorAll(`.${lang}`).forEach(el => el.style.display = 'block');
+      
+      // Update gallery captions if a gallery is open
+      if (currentGallery) {
+        const gallery = galleries[currentGallery];
+        const mainImg = document.getElementById('galleryMainImage');
+        const caption = document.getElementById('galleryCaption');
+        const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+        
+        // Find the active thumbnail
+        let activeIndex = 0;
+        thumbnails.forEach((thumb, index) => {
+          if (thumb.classList.contains('active-thumbnail')) {
+            activeIndex = index;
+          }
+        });
+        
+        // Update caption
+        if (gallery.images[activeIndex]) {
+          caption.innerHTML = gallery.images[activeIndex].caption[lang] || gallery.images[activeIndex].caption.en;
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounters();
+      adjustTimeline();
+    });
+
+    function adjustTimeline() {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelectorAll('.timeline-event').forEach(event => {
+          event.style.left = '0';
+          event.style.textAlign = 'left';
+        });
+      }
+    }
+    window.addEventListener('resize', adjustTimeline);
+  </script>
+</body>
+</html>

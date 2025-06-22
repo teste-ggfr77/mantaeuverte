@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manteau.vert - Professional landscaping, pool construction, and fountain design services. We create sustainable and luxurious outdoor spaces with eco-friendly solutions.">
+    <meta name="keywords" content="garden design, pool construction, fountain design, landscaping, sustainable gardens">
+    <meta name="author" content="Manteau.vert">
+    <meta name="theme-color" content="#000000">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="design.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Manteau.vert - Luxury Landscaping Solutions">
+    <meta property="og:description" content="Create your dream outdoor space with our sustainable and luxurious design solutions.">
+    <meta property="og:image" content="path/to/og-image.jpg">
+    <meta property="og:url" content="https://manteauvert.com">
+    <link rel="icon" type="image/png" href="lotus.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Manteau.vert - Luxury Landscaping Solutions</title>
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="index.html" data-icon="" id="homeLink">Home</a>
+            <a href="about.html" data-icon="ℹ" id="infoLink">Info</a>
+            <a href="contact.html" data-icon="" id="contactLink">Contact</a>
+        </nav>
+        <!-- Language Switcher -->
+        <div class="language-switcher" id="languageSwitcher" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="languageDropdown">
+            <span aria-label="Current language">EN</span>
+        </div>
+        <div class="language-dropdown" id="languageDropdown" role="menu" aria-label="Language selection">
+            <button data-lang="en" role="menuitem">English</button>
+            <button data-lang="ar" role="menuitem">العربية</button>
+            <button data-lang="fr" role="menuitem">Français</button>
+            <button data-lang="es" role="menuitem">Español</button>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Carousel Section -->
+        <section class="carousel" aria-label="Project showcase carousel">
+            <div class="list">
+                <article class="slide">
+                    <img src="10.jpg" alt="Garden design showcase with native plants and smart irrigation" loading="lazy" width="1200" height="800" decoding="async"/>
+                    <div class="content">
+                        <div class="author">MANTEAU.VERT</div>
+                        <div class="title" id="title1">Designing and Creating Gardens</div>
+                        <div class="description" id="des1">
+                            Over the past three years, we have designed and implemented more than 100 garden projects...
+                        </div>
+                        <div class="buttons">
+                            <button class="carousel-btn"><a href="more_photos_garden.html" id="morePhotos1">MORE PHOTOS</a></button>
+                        </div>
+                    </div>
+                    <div class="time"></div>
+                </article>
+                <article class="slide">
+                    <img src="11.jpg" alt="Pool construction" loading="lazy" width="1200" height="800" decoding="async"/>
+                    <div class="content">
+                        <div class="author">MANTEAU.VERT</div>
+                        <div class="title" id="title2">Building Pools</div>
+                        <div class="description" id="des2">
+                            At our company, we focus on providing exceptional value to our clients by building pools...
+                        </div>
+                        <div class="buttons">
+                            <button class="carousel-btn"><a href="more_photos_pool.html" id="morePhotos2">MORE PHOTOS</a></button>
+                        </div>
+                    </div>
+                    <div class="time"></div>
+                </article>
+                <article class="slide">
+                    <img src="13.jpg" alt="Fountain design" loading="lazy" width="1200" height="800" decoding="async"/>
+                    <div class="content">
+                        <div class="author">MANTEAU.VERT</div>
+                        <div class="title" id="title3">A Touch of Luxury and Sustainability</div>
+                        <div class="description" id="des3">
+                            Our fountains are not just aesthetic additions; they are the embodiment of creativity...
+                        </div>
+                        <div class="buttons">
+                            <button class="carousel-btn"><a href="more_photos_fountain.html" id="morePhotos3">MORE PHOTOS</a></button>
+                        </div>
+                    </div>
+                    <div class="time"></div>
+                </article>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnail" role="tablist" aria-label="Project thumbnails">
+                <button class="thumb-item" role="tab" aria-selected="true" aria-controls="slide1">
+                    <img src="10.jpg" alt="Garden design thumbnail" loading="lazy" width="150" height="220" decoding="async"/>
+                    <div class="thumb-content"><div class="title"></div></div>
+                </button>
+                <button class="thumb-item" role="tab" aria-selected="false" aria-controls="slide2">
+                    <img src="11.jpg" alt="Pool thumbnail" loading="lazy" width="150" height="220" decoding="async"/>
+                    <div class="thumb-content"><div class="title"></div></div>
+                </button>
+                <button class="thumb-item" role="tab" aria-selected="false" aria-controls="slide3">
+                    <img src="13.jpg" alt="Fountain thumbnail" loading="lazy" width="150" height="220" decoding="async"/>
+                    <div class="thumb-content"><div class="title"></div></div>
+                </button>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="arrows" role="navigation" aria-label="Carousel Navigation">
+                <button id="prev" aria-label="Previous slide" class="nav-button"></button>
+                <button id="next" aria-label="Next slide" class="nav-button"></button>
+            </div>
+        </section>
+
+        <!-- Mobile Alternative -->
+        <section class="mobile-alternative" aria-label="Mobile project showcase">
+            <article class="mobile-service">
+                <img src="10.jpg" alt="Detailed view of garden design project" loading="lazy" width="300" height="200" decoding="async"/>
+                <h2 id="mobileTitle1">Designing and Creating Gardens</h2>
+                <p id="mobileDes1">Over the past three years, we have designed and implemented more than 100 garden projects...</p>
+                <button><a href="more_photos_garden.html" id="mobileMorePhotos1">MORE PHOTOS</a></button>
+            </article>
+            <article class="mobile-service">
+                <img src="11.jpg" alt="Pool construction" loading="lazy" width="300" height="200" decoding="async"/>
+                <h2 id="mobileTitle2">Building Pools</h2>
+                <p id="mobileDes2">At our company, we focus on providing exceptional value to our clients by building pools...</p>
+                <button><a href="more_photos_pool.html" id="mobileMorePhotos2">MORE PHOTOS</a></button>
+            </article>
+            <article class="mobile-service">
+                <img src="13.jpg" alt="Fountain design" loading="lazy" width="300" height="200" decoding="async"/>
+                <h2 id="mobileTitle3">A Touch of Luxury and Sustainability</h2>
+                <p id="mobileDes3">Our fountains are not just aesthetic additions; they are the embodiment of creativity...</p>
+                <button><a href="more_photos_fountain.html" id="mobileMorePhotos3">MORE PHOTOS</a></button>
+            </article>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 Manteau.vert. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language data
+        const translations = {
+            en: {
+                home: "Home",
+                info: "Info",
+                contact: "Contact",
+                title1: "Designing and Creating Gardens",
+                des1: "Over the past three years, we have designed and implemented more than 100 garden projects, ranging from 200 to 2000 square meters. We use native, drought-resistant plants, reducing water consumption by up to 40%. Our innovative solutions in smart irrigation systems save our clients around 15% of annual operational costs. We don't just design gardens; we transform spaces into investments that enhance sustainability and attractiveness, improving the quality of daily life.",
+                morePhotos1: "MORE PHOTOS",
+                title2: "Building Pools",
+                des2: "At our company, we focus on providing exceptional value to our clients by building pools that combine beauty and durability. With a team of over 20 specialized engineers and technicians, we have built more than 50 pools in just the past year. We rely on the latest global technologies, ensuring a reduction in water consumption by up to 30% through advanced filtration systems, and a 25% decrease in maintenance costs compared to traditional pools. Investing in a pool designed by us not only enhances the swimming experience but also increases the value of your property by 10-15%.",
+                morePhotos2: "MORE PHOTOS",
+                title3: "A Touch of Luxury and Sustainability",
+                des3: "Our fountains are not just aesthetic additions; they are the embodiment of creativity and advanced engineering. With our specialized team, we have built more than 30 fountains that operate with water recycling systems, reducing consumption by 50% and maintaining resource sustainability. Adding a fountain to your property can increase its market value by up to 8%. Using energy-efficient lighting technologies, we provide solutions that align with modern environmental standards without compromising on luxurious appearance.",
+                morePhotos3: "MORE PHOTOS",
+                mobileTitle1: "Designing and Creating Gardens",
+                mobileDes1: "Over the past three years, we have designed and implemented more than 100 garden projects, ranging from 200 to 2000 square meters...",
+                mobileMorePhotos1: "MORE PHOTOS",
+                mobileTitle2: "Building Pools",
+                mobileDes2: "At our company, we focus on providing exceptional value to our clients by building pools that combine beauty and durability...",
+                mobileMorePhotos2: "MORE PHOTOS",
+                mobileTitle3: "A Touch of Luxury and Sustainability",
+                mobileDes3: "Our fountains are not just aesthetic additions; they are the embodiment of creativity and advanced engineering...",
+                mobileMorePhotos3: "MORE PHOTOS"
+            },
+            ar: {
+                home: "الرئيسية",
+                info: "معلومات",
+                contact: "اتصل بنا",
+                title1: "تصميم وإنشاء الحدائق",
+                des1: "على مدى السنوات الثلاث الماضية، قمنا بتصميم وتنفيذ أكثر من 100 مشروع حديقة، تتراوح مساحتها بين 200 و2000 متر مربع. نستخدم نباتات محلية مقاومة للجفاف، مما يقلل من استهلاك المياه بنسبة تصل إلى 40%. توفر حلولنا المبتكرة في أنظمة الري الذكية لعملائنا توفيرًا يصل إلى 15% من التكاليف التشغيلية السنوية. نحن لا نصمم الحدائق فقط؛ نحول المساحات إلى استثمارات تعزز الاستدامة والجاذبية، مما يحسن جودة الحياة اليومية.",
+                morePhotos1: "المزيد من الصور",
+                title2: "بناء المسابح",
+                des2: "في شركتنا، نركز على تقديم قيمة استثنائية لعملائنا من خلال بناء مسابح تجمع بين الجمال والمتانة. مع فريق يضم أكثر من 20 مهندسًا وفنيًا متخصصًا، قمنا ببناء أكثر من 50 مسبحًا في العام الماضي فقط. نعتمد على أحدث التقنيات العالمية، مما يضمن تقليل استهلاك المياه بنسبة تصل إلى 30% من خلال أنظمة الترشيح المتقدمة، وانخفاض بنسبة 25% في تكاليف الصيانة مقارنة بالمسابح التقليدية. إن الاستثمار في مسبح مصمم من قبلنا لا يعزز تجربة السباحة فحسب، بل يزيد أيضًا من قيمة ممتلكاتك بنسبة 10-15%.",
+                morePhotos2: "المزيد من الصور",
+                title3: "لمسة من الفخامة والاستدامة",
+                des3: "نوافيرنا ليست مجرد إضافات جمالية؛ إنها تجسيد للإبداع والهندسة المتقدمة. مع فريقنا المتخصص، قمنا ببناء أكثر من 30 نافورة تعمل بأنظمة إعادة تدوير المياه، مما يقلل الاستهلاك بنسبة 50% ويحافظ على استدامة الموارد. إضافة نافورة إلى ممتلكاتك يمكن أن تزيد من قيمتها السوقية بنسبة تصل إلى 8%. باستخدام تقنيات الإضاءة الموفرة للطاقة، نقدم حلولًا تتماشى مع المعايير البيئية الحديثة دون المساومة على المظهر الفاخر.",
+                morePhotos3: "المزيد من الصور",
+                mobileTitle1: "تصميم وإنشاء الحدائق",
+                mobileDes1: "على مدى السنوات الثلاث الماضية، قمنا بتصميم وتنفيذ أكثر من 100 مشروع حديقة، تتراوح مساحتها بين 200 و2000 متر مربع...",
+                mobileMorePhotos1: "المزيد من الصور",
+                mobileTitle2: "بناء المسابح",
+                mobileDes2: "في شركتنا، نركز على تقديم قيمة استثنائية لعملائنا من خلال بناء مسابح تجمع بين الجمال والمتانة...",
+                mobileMorePhotos2: "المزيد من الصور",
+                mobileTitle3: "لمسة من الفخامة والاستدامة",
+                mobileDes3: "نوافيرنا ليست مجرد إضافات جمالية؛ إنها تجسيد للإبداع والهندسة المتقدمة...",
+                mobileMorePhotos3: "المزيد من الصور"
+            },
+            fr: {
+                home: "Accueil",
+                info: "Info",
+                contact: "Contact",
+                title1: "Conception et création de jardins",
+                des1: "Au cours des trois dernières années, nous avons conçu et réalisé plus de 100 projets de jardins, allant de 200 à 2000 mètres carrés. Nous utilisons des plantes indigènes résistantes à la sécheresse, réduisant la consommation d'eau jusqu'à 40%. Nos solutions innovantes en systèmes d'irrigation intelligents permettent à nos clients d'économiser environ 15% des coûts opérationnels annuels. Nous ne concevons pas seulement des jardins ; nous transformons les espaces en investissements qui améliorent la durabilité et l'attractivité, améliorant ainsi la qualité de vie quotidienne.",
+                morePhotos1: "PLUS DE PHOTOS",
+                title2: "Construction de piscines",
+                des2: "Dans notre entreprise, nous nous concentrons sur la fourniture d'une valeur exceptionnelle à nos clients en construisant des piscines qui allient beauté et durabilité. Avec une équipe de plus de 20 ingénieurs et techniciens spécialisés, nous avons construit plus de 50 piscines rien que l'année dernière. Nous nous appuyons sur les dernières technologies mondiales, garantissant une réduction de la consommation d'eau jusqu'à 30% grâce à des systèmes de filtration avancés, et une diminution de 25% des coûts de maintenance par rapport aux piscines traditionnelles. Investir dans une piscine conçue par nous améliore non seulement l'expérience de baignade, mais augmente également la valeur de votre propriété de 10 à 15%.",
+                morePhotos2: "PLUS DE PHOTOS",
+                title3: "Une touche de luxe et de durabilité",
+                des3: "Nos fontaines ne sont pas seulement des ajouts esthétiques ; elles incarnent la créativité et l'ingénierie avancée. Avec notre équipe spécialisée, nous avons construit plus de 30 fontaines fonctionnant avec des systèmes de recyclage de l'eau, réduisant la consommation de 50% et maintenant la durabilité des ressources. Ajouter une fontaine à votre propriété peut augmenter sa valeur marchande jusqu'à 8%. En utilisant des technologies d'éclairage écoénergétiques, nous fournissons des solutions conformes aux normes environnementales modernes sans compromettre l'apparence luxueuse.",
+                morePhotos3: "PLUS DE PHOTOS",
+                mobileTitle1: "Conception et création de jardins",
+                mobileDes1: "Au cours des trois dernières années, nous avons conçu et réalisé plus de 100 projets de jardins, allant de 200 à 2000 mètres carrés...",
+                mobileMorePhotos1: "PLUS DE PHOTOS",
+                mobileTitle2: "Construction de piscines",
+                mobileDes2: "Dans notre entreprise, nous nous concentrons sur la fourniture d'une valeur exceptionnelle à nos clients en construisant des piscines...",
+                mobileMorePhotos2: "PLUS DE PHOTOS",
+                mobileTitle3: "Une touche de luxe et de durabilité",
+                mobileDes3: "Nos fontaines ne sont pas seulement des ajouts esthétiques ; elles incarnent la créativité et l'ingénierie avancée...",
+                mobileMorePhotos3: "PLUS DE PHOTOS"
+            },
+            es: {
+                home: "Inicio",
+                info: "Información",
+                contact: "Contacto",
+                title1: "Diseño y creación de jardines",
+                des1: "En los últimos tres años, hemos diseñado e implementado más de 100 proyectos de jardines, que van desde 200 hasta 2000 metros cuadrados. Utilizamos plantas nativas resistentes a la sequía, reduciendo el consumo de agua hasta en un 40%. Nuestras soluciones innovadoras en sistemas de riego inteligente ahorran a nuestros clientes alrededor del 15% de los costos operativos anuales. No solo diseñamos jardines; transformamos espacios en inversiones que mejoran la sostenibilidad y el atractivo, mejorando la calidad de vida diaria.",
+                morePhotos1: "MÁS FOTOS",
+                title2: "Construcción de piscinas",
+                des2: "En nuestra empresa, nos enfocamos en brindar un valor excepcional a nuestros clientes construyendo piscinas que combinan belleza y durabilidad. Con un equipo de más de 20 ingenieros y técnicos especializados, hemos construido más de 50 piscinas solo el año pasado. Nos basamos en las últimas tecnologías globales, garantizando una reducción en el consumo de agua de hasta un 30% a través de sistemas de filtración avanzados, y una disminución del 25% en los costos de mantenimiento en comparación con las piscinas tradicionales. Invertir en una piscina diseñada por nosotros no solo mejora la experiencia de natación, sino que también aumenta el valor de su propiedad en un 10-15%.",
+                morePhotos2: "MÁS FOTOS",
+                title3: "Un toque de lujo y sostenibilidad",
+                des3: "Nuestras fuentes no son solo adiciones estéticas; son la encarnación de la creatividad y la ingeniería avanzada. Con nuestro equipo especializado, hemos construido más de 30 fuentes que operan con sistemas de reciclaje de agua, reduciendo el consumo en un 50% y manteniendo la sostenibilidad de los recursos. Agregar una fuente a su propiedad puede aumentar su valor de mercado hasta en un 8%. Utilizando tecnologías de iluminación energéticamente eficientes, ofrecemos soluciones que se alinean con los estándares ambientales modernos sin comprometer la apariencia lujosa.",
+                morePhotos3: "MÁS FOTOS",
+                mobileTitle1: "Diseño y creación de jardines",
+                mobileDes1: "En los últimos tres años, hemos diseñado e implementado más de 100 proyectos de jardines, que van desde 200 hasta 2000 metros cuadrados...",
+                mobileMorePhotos1: "MÁS FOTOS",
+                mobileTitle2: "Construcción de piscinas",
+                mobileDes2: "En nuestra empresa, nos enfocamos en brindar un valor excepcional a nuestros clientes construyendo piscinas...",
+                mobileMorePhotos2: "MÁS FOTOS",
+                mobileTitle3: "Un toque de lujo y sostenibilidad",
+                mobileDes3: "Nuestras fuentes no son solo adiciones estéticas; son la encarnación de la creatividad y la ingeniería avanzada...",
+                mobileMorePhotos3: "MÁS FOTOS"
+            }
+        };
+
+        // Set default language
+        let currentLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = currentLanguage;
+        document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+        // Update all texts
+        function updateTexts() {
+            // Desktop texts
+            document.getElementById('homeLink').textContent = translations[currentLanguage].home;
+            document.getElementById('infoLink').textContent = translations[currentLanguage].info;
+            document.getElementById('contactLink').textContent = translations[currentLanguage].contact;
+            document.getElementById('title1').textContent = translations[currentLanguage].title1;
+            document.getElementById('des1').textContent = translations[currentLanguage].des1;
+            document.getElementById('morePhotos1').textContent = translations[currentLanguage].morePhotos1;
+            document.getElementById('title2').textContent = translations[currentLanguage].title2;
+            document.getElementById('des2').textContent = translations[currentLanguage].des2;
+            document.getElementById('morePhotos2').textContent = translations[currentLanguage].morePhotos2;
+            document.getElementById('title3').textContent = translations[currentLanguage].title3;
+            document.getElementById('des3').textContent = translations[currentLanguage].des3;
+            document.getElementById('morePhotos3').textContent = translations[currentLanguage].morePhotos3;
+            
+            // Mobile texts
+            document.getElementById('mobileTitle1').textContent = translations[currentLanguage].mobileTitle1;
+            document.getElementById('mobileDes1').textContent = translations[currentLanguage].mobileDes1;
+            document.getElementById('mobileMorePhotos1').textContent = translations[currentLanguage].mobileMorePhotos1;
+            document.getElementById('mobileTitle2').textContent = translations[currentLanguage].mobileTitle2;
+            document.getElementById('mobileDes2').textContent = translations[currentLanguage].mobileDes2;
+            document.getElementById('mobileMorePhotos2').textContent = translations[currentLanguage].mobileMorePhotos2;
+            document.getElementById('mobileTitle3').textContent = translations[currentLanguage].mobileTitle3;
+            document.getElementById('mobileDes3').textContent = translations[currentLanguage].mobileDes3;
+            document.getElementById('mobileMorePhotos3').textContent = translations[currentLanguage].mobileMorePhotos3;
+            
+            // Update language switcher text
+            document.getElementById('languageSwitcher').textContent = currentLanguage.toUpperCase();
+        }
+
+        // Toggle language dropdown
+        document.getElementById('languageSwitcher').addEventListener('click', () => {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Change language
+        document.querySelectorAll('.language-dropdown button').forEach(button => {
+            button.addEventListener('click', () => {
+                currentLanguage = button.getAttribute('data-lang');
+                localStorage.setItem('language', currentLanguage);
+                document.documentElement.lang = currentLanguage;
+                document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+                updateTexts();
+                document.getElementById('languageDropdown').style.display = 'none';
+            });
+        });
+
+        // Initialize
+        updateTexts();
+
+        // Carousel functionality with improved error handling and accessibility
+        class Carousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.slides = document.querySelectorAll('.slide');
+                this.thumbItems = document.querySelectorAll('.thumb-item');
+                this.prevBtn = document.getElementById('prev');
+                this.nextBtn = document.getElementById('next');
+                this.slideInterval = null;
+                this.boundKeyHandler = this.handleKeydown.bind(this);
+                
+                this.init();
+            }
+
+            init() {
+                try {
+                    this.setupAccessibility();
+                    this.addEventListeners();
+                    this.showSlide(0);
+                    this.startAutoRotate();
+                    this.setupTouchEvents();
+                } catch (error) {
+                    console.error('Carousel initialization failed:', error);
+                }
+            }
+
+            setupAccessibility() {
+                this.slides.forEach((slide, index) => {
+                    slide.setAttribute('role', 'tabpanel');
+                    slide.setAttribute('aria-label', `Slide ${index + 1}`);
+                });
+            }
+
+            showSlide(index) {
+                if (!this.slides || !this.thumbItems) return;
+                
+                // Bounds checking
+                index = Math.max(0, Math.min(index, this.slides.length - 1));
+
+                this.slides.forEach(slide => slide.classList.remove('active'));
+                this.thumbItems.forEach(thumb => thumb.classList.remove('active'));
+
+                try {
+                    this.slides[index].classList.add('active');
+                    this.thumbItems[index].classList.add('active');
+                    this.currentSlide = index;
+
+                    this.updateAriaAttributes(index);
+                } catch (error) {
+                    console.error('Error showing slide:', error);
+                }
+            }
+
+            updateAriaAttributes(index) {
+                this.slides.forEach((slide, i) => {
+                    slide.setAttribute('aria-hidden', String(i !== index));
+                    slide.setAttribute('tabindex', i === index ? '0' : '-1');
+                });
+            }
+
+            handleKeydown(e) {
+                if (e.key === 'ArrowLeft') this.prevSlide();
+                if (e.key === 'ArrowRight') this.nextSlide();
+            }
+
+            setupTouchEvents() {
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                const handleTouchStart = (e) => {
+                    touchStartX = e.touches[0].clientX;
+                };
+
+                const handleTouchEnd = (e) => {
+                    touchEndX = e.changedTouches[0].clientX;
+                    const diff = touchStartX - touchEndX;
+                    
+                    if (Math.abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                };
+
+                this.slides.forEach(slide => {
+                    slide.addEventListener('touchstart', handleTouchStart);
+                    slide.addEventListener('touchend', handleTouchEnd);
+                });
+            }
+
+            addEventListeners() {
+                document.addEventListener('keydown', this.boundKeyHandler);
+
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+
+                this.thumbItems.forEach((thumb, index) => {
+                    thumb.addEventListener('click', () => this.showSlide(index));
+                });
+
+                // Throttled mousemove handler
+                let ticking = false;
+                window.addEventListener('mousemove', (e) => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            this.handleMouseMove(e);
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            }
+
+            // Clean up method
+            destroy() {
+                document.removeEventListener('keydown', this.boundKeyHandler);
+                clearInterval(this.slideInterval);
+                // Remove other event listeners as needed
+            }
+        }
+
+        // Initialize carousel
+        new Carousel();
+
+        // Header link hover effect
+        const links = document.querySelectorAll("header a");
+        window.addEventListener("mousemove", (e) => {
+            links.forEach((link) => {
+                const rect = link.getBoundingClientRect();
+                const linkX = rect.left + rect.width / 2;
+                const linkY = rect.top + rect.height / 2;
+                const deltaX = e.clientX - linkX;
+                const deltaY = e.clientY - linkY;
+                const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+                const maxDistance = 200;
+                const force = Math.max(0, 1 - distance / maxDistance);
+                const offsetX = deltaX * force * 0.2;
+                const offsetY = deltaY * force * 0.2;
+                link.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+
+        window.addEventListener("mouseleave", () => {
+            links.forEach((link) => {
+                link.style.transform = "translate(0, 0)";
+            });
+        });
+
+        // Fix for More Photos buttons
+        document.querySelectorAll('.carousel-btn, .mobile-service button').forEach(button => {
+            button.style.cursor = 'pointer';
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const link = this.querySelector('a');
+                if (link) {
+                    window.location.href = link.href;
+                }
+            });
+        });
+    </script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Carousel();
+        });
+    </script>
+</body>
+</html>

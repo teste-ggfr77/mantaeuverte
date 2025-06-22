@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Contact | Luxury Interface</title>
+    <style>
+        /* Previous luxury styles remain unchanged */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .contact-info {
+            background: rgba(20, 20, 20, 0.95);
+            width: 35%;
+            padding: 5% 3%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255, 94, 0, 0.3);
+            backdrop-filter: blur(5px);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            color: #ff5e00;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff5e00;
+            animation: expandLine 1s ease-in-out forwards;
+        }
+
+        @keyframes expandLine {
+            from {
+                width: 0;
+            }
+            to {
+                width: 50px;
+            }
+        }
+
+        .contact-info p {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .contact-info img {
+            filter: invert(1);
+            width: 24px;
+            opacity: 0.8;
+        }
+
+        .form-container {
+            width: 65%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.95));
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        form {
+            width: 60%;
+            min-width: 400px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            text-align: center;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff5e00;
+            box-shadow: 0 0 15px rgba(255, 94, 0, 0.1);
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: linear-gradient(45deg, #2c2c2b, #ff8c42);
+            color: #fff;
+            padding: 16px 45px;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 94, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+            border-radius: 50%;
+        }
+
+        button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #ff6f1a, #ff9f5e);
+            box-shadow: 0 8px 25px rgba(255, 94, 0, 0.5);
+        }
+
+        /* تأثير ظهور الزر */
+        @keyframes buttonAppear {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            animation: buttonAppear 1s ease-out;
+        }
+
+        /* زر الرجوع */
+        .go-back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .go-back-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5), 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* لغة الترجمة */
+/* لغة الترجمة */
+/* لغة الترجمة */
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.language-switcher:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.language-dropdown {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: rgba(20, 20, 20, 0.95); /* لون خلفية أكثر تناسقًا */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.language-dropdown button {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.language-dropdown button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+     <!-- زر تبديل اللغة -->
+     <div class="language-switcher" id="languageSwitcher" >Tr</div>
+
+     <!-- قائمة الترجمة -->
+     <div class="language-dropdown" id="languageDropdown">
+         <button data-lang="en">English</button>
+         <button data-lang="ar">العربية</button>
+         <button data-lang="fr">Français</button>
+         <button data-lang="es">Español</button>
+     </div>
+
+    <!-- Added Back Go Back Button -->
+    <a href="index.html
+" class="go-back-button" aria-label="Go back">←</a>
+
+    <!-- Rest of your existing luxury layout -->
+    <div class="container">
+        <div class="contact-info">
+            <h2 id="contactInfoTitle">Contact Details</h2>
+            <p>
+                <img src="gmail-logo.png" alt="Email">
+                <span id="emailText">manteauverte@gmail.com</span>
+            </p>
+            <p>
+                <img src="phone-call.png" alt="Phone">
+                <span id="phoneText">+212668874942</span>
+            </p>
+        </div>
+
+        <div class="form-container">
+            <form action="https://formspree.io/f/xrbebzav" method="POST">
+                <h1 id="formTitle">Get in Touch</h1>
+                <div class="form-group">
+                    <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <input type="tel" id="contact_number" name="contact_number" placeholder="Contact Number" required>
+                </div>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" id="submitButton">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Added Back Translation Logic
+        const translations = {
+            en: {
+                contactInfoTitle: "Contact Details",
+                formTitle: "Get in Touch",
+                emailText: "manteauverte@gmail.com",
+                phoneText: "+212668874942",
+                firstNamePlaceholder: "First Name",
+                lastNamePlaceholder: "Last Name",
+                emailPlaceholder: "Email Address",
+                contactNumberPlaceholder: "Contact Number",
+                messagePlaceholder: "Your Message",
+                submitButton: "Send Message"
+            },
+            ar: {
+                contactInfoTitle: "معلومات الاتصال",
+                formTitle: "تواصل معنا",
+                emailText: "manteauverte@gmail.com",
+                phoneText: "+212668874942",
+                firstNamePlaceholder: "الاسم الأول",
+                lastNamePlaceholder: "الاسم الأخير",
+                emailPlaceholder: "البريد الإلكتروني",
+                contactNumberPlaceholder: "رقم الاتصال",
+                messagePlaceholder: "رسالتك",
+                submitButton: "إرسال الرسالة"
+            },
+            fr: {
+                contactInfoTitle: "Coordonnées",
+                formTitle: "Nous Contacter",
+                emailText: "manteauverte@gmail.com",
+                phoneText: "++212668874942",
+                firstNamePlaceholder: "Prénom",
+                lastNamePlaceholder: "Nom de famille",
+                emailPlaceholder: "Adresse e-mail",
+                contactNumberPlaceholder: "Numéro de contact",
+                messagePlaceholder: "Votre message",
+                submitButton: "Envoyer le message"
+            },
+            es: {
+                contactInfoTitle: "Detalles de Contacto",
+                formTitle: "Ponerse en Contacto",
+                emailText: "manteauverte@gmail.com",
+                phoneText: "+212668874942",
+                firstNamePlaceholder: "Nombre",
+                lastNamePlaceholder: "Apellido",
+                emailPlaceholder: "Dirección de correo",
+                contactNumberPlaceholder: "Número de contacto",
+                messagePlaceholder: "Tu mensaje",
+                submitButton: "Enviar mensaje"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        function updateTexts() {
+            document.getElementById('contactInfoTitle').textContent = translations[currentLanguage].contactInfoTitle;
+            document.getElementById('formTitle').textContent = translations[currentLanguage].formTitle;
+            document.getElementById('emailText').textContent = translations[currentLanguage].emailText;
+            document.getElementById('phoneText').textContent = translations[currentLanguage].phoneText;
+            document.getElementById('first_name').placeholder = translations[currentLanguage].firstNamePlaceholder;
+            document.getElementById('last_name').placeholder = translations[currentLanguage].lastNamePlaceholder;
+            document.getElementById('email').placeholder = translations[currentLanguage].emailPlaceholder;
+            document.getElementById('contact_number').placeholder = translations[currentLanguage].contactNumberPlaceholder;
+            document.getElementById('message').placeholder = translations[currentLanguage].messagePlaceholder;
+            document.getElementById('submitButton').textContent = translations[currentLanguage].submitButton;
+        }
+
+        document.getElementById('languageSwitcher').addEventListener('click', () => {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.querySelectorAll('.language-dropdown button').forEach(button => {
+            button.addEventListener('click', () => {
+                currentLanguage = button.getAttribute('data-lang');
+                localStorage.setItem('language', currentLanguage);
+                updateTexts();
+                document.documentElement.lang = currentLanguage;
+                document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+                document.getElementById('languageDropdown').style.display = 'none';
+            });
+        });
+
+        updateTexts();
+    </script>
+</body>
+</html>
